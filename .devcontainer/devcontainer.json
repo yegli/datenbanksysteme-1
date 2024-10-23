@@ -1,0 +1,23 @@
+{
+    "name": "Postgres Exercises",
+    "image": "postgres:16.4-bullseye",
+    "mounts": [
+        "source=${localWorkspaceFolder}/pgdata,target=/var/lib/postgresql/data,type=bind",
+        "source=${localWorkspaceFolder}/scripts,target=/scripts,type=bind"
+    ],
+    "containerEnv": {
+      "POSTGRES_USER": "yanick",
+      "POSTGRES_PASSWORD": "12345678",
+      "POSTGRES_DB": "exercise_db"
+    },
+    "forwardPorts": [5432],
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.defaultProfile.linux": "bash",
+          "terminal.integrated.profiles.linux": {}
+        }
+      }
+    }
+  }
+  
