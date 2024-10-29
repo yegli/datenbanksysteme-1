@@ -42,9 +42,9 @@ INSERT INTO Mitarbeiter (mitarbeiter_nummer, Abteilung, Anstellungsdatum) VALUES
 (9, 'Verkauf', '2021-08-22'),
 (10, 'Technik', '2022-02-11');
 
--- TABLE verkäufer
+-- TABLE verkaeufer
 
-INSERT INTO Verkäufer (id, fk_mitarbeiter, fk_standort) VALUES
+INSERT INTO verkaeufer (id, fk_mitarbeiter, fk_standort) VALUES
 (1,10,1),
 (2,9,1),
 (3,8,1),

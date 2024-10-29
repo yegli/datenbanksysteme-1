@@ -20,7 +20,7 @@ CREATE TABLE mitarbeiter (
   anstellungsdatum DATE NOT NULL
 );
 
-CREATE TABLE verkäufer (
+CREATE TABLE verkaeufer (
   id INTEGER PRIMARY KEY NOT NULL UNIQUE,--NOT NULL UNIQUE?
   fk_mitarbeiter INTEGER NOT NULL UNIQUE,
   fk_standort INTEGER NOT NULL
