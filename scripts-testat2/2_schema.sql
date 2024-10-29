@@ -4,7 +4,7 @@
  */
 
 CREATE TABLE person ( --Needs Constraint: fk_kunde exclusive or fk_mitarbeiter
-  id INTEGER PRIMARY KEY, --NOT NULL UNIQUE?
+  id INTEGER PRIMARY KEY NOT NULL UNIQUE,
   name VARCHAR(255) NOT NULL,
   vorname VARCHAR(255) NOT NULL,
   adresse VARCHAR(255) NOT NULL,
@@ -21,17 +21,17 @@ CREATE TABLE mitarbeiter (
 );
 
 CREATE TABLE verkaeufer (
-  id INTEGER PRIMARY KEY NOT NULL UNIQUE,--NOT NULL UNIQUE?
+  id INTEGER PRIMARY KEY NOT NULL UNIQUE,
   fk_mitarbeiter INTEGER NOT NULL UNIQUE,
   fk_standort INTEGER NOT NULL
   );
 
 CREATE TABLE kunde (
-  kunden_nummer INTEGER PRIMARY KEY--NOT NULL UNIQUE?
+  kunden_nummer INTEGER PRIMARY KEY NOT NULL UNIQUE
   );
 
 CREATE TABLE standort (
-  id INTEGER PRIMARY KEY, --NOT NULL UNIQUE?
+  id INTEGER PRIMARY KEY NOT NULL UNIQUE,
   stadt VARCHAR(255) NOT NULL
 );
 
@@ -45,7 +45,7 @@ CREATE TABLE fahrzeug (
 );
 
 CREATE TABLE vertrag (
-  id INTEGER PRIMARY KEY,--NOT NULL UNIQUE?
+  id INTEGER PRIMARY KEY NOT NULL UNIQUE,
   verkaufsdatum DATE NOT NULL,
   zahlungsdatum DATE NOT NULL,
   fk_fahrzeug INTEGER UNIQUE,
