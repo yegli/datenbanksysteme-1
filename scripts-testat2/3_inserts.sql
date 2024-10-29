@@ -1,78 +1,125 @@
 /*
- * Testdaten einfüllen
+ * INSERT minimum 10 tuples of Test Data for each table
+ * DISCLAIMER: Test Data has been created by CHATGPT, PROMPT is added to the appendix of our documentation.
  */
--- TABLE  mitarbeiter
 
-INSERT INTO mitarbeiter (name, vorname, wohnort, adresse, geburtstag) VALUES 
-('Baumeister', 'Erik', 'Hinwil', 'Habertstrasse 1', to_date('1994-01-01', 'YYYY-MM-DD')),
-('Kishelleff', 'Nico', 'Zürich', 'Bahnhofstrasse 12', to_date('1995-12-23', 'YYYY-MM-DD')),
-('Beer', 'Richard', 'Wil', 'Gibswilerstrasse 24', to_date('2002-03-13', 'YYYY-MM-DD')),
-('Urs', 'Lars', 'Rüti', 'Amreinstrasse 5', to_date('2000-04-25', 'YYYY-MM-DD')),
-('Gujer', 'Nils', 'Uster', 'Zeughausstrasse 4', to_date('1960-07-12', 'YYYY-MM-DD')),
-('Müller', 'Jakop', 'Wädenswil', 'Zoostrasse 3', to_date('1988-12-01', 'YYYY-MM-DD')),
-('Seefar', 'Claudio', 'Eschenbach', 'Alte Jonastrasse 12', to_date('1992-07-11', 'YYYY-MM-DD'));
+-- TABLE person
 
--- TABLE  kunde
+INSERT INTO Person (ID, Name, Adresse, Email, Telefonnummer) VALUES
+(1, 'John Doe', '123 Main St', 'johndoe@example.com', '0798513647'),
+(2, 'Jane Smith', '456 Oak St', 'janesmith@example.com', '0776854235'),
+(3, 'Michael Brown', '789 Pine St', 'michaelbrown@example.com', '0776954832'),
+(4, 'Emily White', '135 Maple St', 'emilywhite@example.com', '0792345678'),
+(5, 'David Black', '246 Elm St', 'davidblack@example.com', '0779583434'),
+(6, 'Sophia Green', '357 Cedar St', 'sophiagreen@example.com', '0792349797'),
+(7, 'James Blue', '468 Birch St', 'jamesblue@example.com', '0771232992'),
+(8, 'Emma Red', '579 Willow St', 'emmared@example.com', '0796787878'),
+(9, 'Lucas Yellow', '681 Ash St', 'lucasyellow@example.com', '0771423647'),
+(10, 'Olivia Purple', '792 Spruce St', 'oliviapurple@example.com', '0791267352'),
+(11, 'Liam Orange', '893 Sycamore St', 'liamorange@example.com', '0771423564'),
+(12, 'Ava Pink', '904 Poplar St', 'avapink@example.com', '0796843674'),
+(13, 'Noah Brown', '015 Cedar St', 'noahbrown@example.com', '0779685869'),
+(14, 'Isabella White', '126 Birch St', 'isabellawhite@example.com', '0799654828'),
+(15, 'Ethan Black', '237 Willow St', 'ethenblack@example.com', '0772345342'),
+(16, 'Sophia Green', '348 Elm St', 'sophiagreen@example.com', '0776754976'),
+(17, 'Mia Blue', '459 Pine St', 'miablue@example.com', '0771423647'),
+(18, 'Mason Red', '560 Oak St', 'masonred@example.com', '0795674534'),
+(19, 'Amelia Yellow', '671 Main St', 'ameliayellow@example.com', '0798568546'),
+(20, 'Elijah Purple', '782 Spruce St', 'elijahpurple@example.com', '0771236363');
 
-INSERT INTO kunde (name, vorname, wohnort, adresse, foto) VALUES 
-('Hager', 'Elias', 'Jona', 'Koenigsstrasse 7', 'img/elias.png'),
-('Petrizzo', 'Mino', 'Uznach', 'Mühlaustrasse 7', 'img/mino.png'),
-('Kurt', 'Emely', 'Rapperswil', 'Eggenstrasse 29', 'img/emely.png'),
-('Speer', 'Klaus', 'Gommiswald', 'Utzstrasse 9', 'img/klaus.png'),
-('Keller', 'Sebastian', 'Sibnen', 'Herrenaggerstrasse 13', 'img/sebastian.png'),
-('Kurt', 'Mattias', 'Galgenen', 'Festwallstrasse 1', 'img/mattias.png'),
-('Rasper', 'Tomas', 'Pfeffikon SZ', 'Echtheitstrasse 34', 'img/tomas.png');
+-- TABLE mitarbeiter
 
--- TABLE  standorte
+INSERT INTO Mitarbeiter (ID, Abteilung, Anstellungsdatum)
+VALUES
+(1, 'Verkauf', '2015-06-15'),
+(2, 'Technik', '2017-03-21'),
+(3, 'Verkauf', '2016-09-10'),
+(4, 'HR', '2018-01-25'),
+(5, 'Technik', '2019-11-03'),
+(6, 'Verkauf', '2020-07-12'),
+(7, 'Marketing', '2017-05-18'),
+(8, 'Finanzen', '2016-04-09'),
+(9, 'Verkauf', '2021-08-22'),
+(10, 'Technik', '2022-02-11');
 
-INSERT INTO standorte (strasse, ort, plz, telefon_nr, email, standort_name) VALUES 
-('Zürcherstrasse 12', 'Uznach', '8730', '079 483 23 43', 'test@email.com', 'Treffpunkt1'),
-('Lauferstrasse 6', 'Jona', '8645', '077 434 25 43', 'test1@email.com', 'Treffpunkt2'),
-('Senhallenstrasse 34', 'Rapperswil', '8640', '078 283 23 43', 'test2@email.com', 'Treffpunkt3'),
-('Gehburgstrasse 13', 'Rüti', '8636', '072 352 23 35', 'test3@email.com', 'Treffpunkt4'),
-('Usterstrasse 15', 'Uster', '8610', '079 153 25 62', 'test4@email.com', 'Treffpunkt5'),
-('Gasterstrasse 1', 'Zürich', '8000', '075 241 24 14', 'test5@email.com', 'Treffpunkt6'),
-('Segasterstrasse 14', 'Meilen', '8706', '078 263 26 21', 'test6@email.com', 'Treffpunkt7');
+-- TABLE verkäufer
 
--- TABLE  kunden_pro_standort
+INSERT INTO Verkäufer (id) VALUES
+(1),
+(2),
+(3),
+(4),
+(5),
+(6),
+(7),
+(8),
+(9),
+(10);
 
-INSERT INTO kunden_pro_standort (kunde_id, standort_id) VALUES 
+-- TABLE kunde
+
+INSERT INTO kunde (id) VALUES
+(1),
+(2),
+(3),
+(4),
+(5),
+(6),
+(7),
+(8),
+(9),
+(10);
+
+-- TABLE standorte
+
+INSERT INTO standort (id, stadt) VALUES
+(1, 'Zurich'),
+(2, 'Bern'),
+(3, 'Luzern'),
+(4, 'Frankfurt'),
+(5, 'Stuttgart'),
+(6, 'Düsseldorf'),
+(7, 'Köln'),
+(8, 'Leipzig'),
+(9, 'Dresden'),
+(10, 'Hannover');
+
+-- TABLE fahrzeug
+
+INSERT INTO fahrzeug (id, hersteller, model, baujahr, preis, verfuegbarkeit, standort_id) VALUES
+(1, 'Audi', 'A4', 2019, 40000, TRUE, 1),
+(2, 'BMW', 'X5', 2020, 50000, TRUE, 2),
+(3, 'Mercedes', 'C-Class', 2018, 45000, TRUE, 3),
+(4, 'Volkswagen', 'Golf', 2017, 30000, FALSE, 4),
+(5, 'Toyota', 'Corolla', 2016, 25000, TRUE, 5),
+(6, 'Ford', 'Focus', 2015, 20000, TRUE, 6),
+(7, 'Honda', 'Civic', 2014, 15000, FALSE, 7),
+(8, 'Hyundai', 'Elantra', 2013, 10000, FALSE, 8),
+(9, 'Kia', 'Rio', 2012, 8000, TRUE, 9),
+(10, 'Nissan', 'Sentra', 2011, 6000, FALSE, 10);
+
+-- TABLE vertrag
+
+INSERT INTO vertrag (id, verkaufsdatum, zahlungsdatum, kunden_id, fahrzeug_id) VALUES
+(1, '2022-03-01', '2022-03-01', 1, 1),
+(2, '2022-03-02', '2022-03-02', 2, 2),
+(3, '2022-03-03', '2022-03-03', 3, 3),
+(4, '2022-03-04', '2022-03-04', 4, 4),
+(5, '2022-03-05', '2022-03-05', 5, 5),
+(6, '2022-03-06', '2022-03-06', 6, 6),
+(7, '2022-03-07', '2022-03-07', 7, 7),
+(8, '2022-03-08', '2022-03-08', 8, 8),
+(9, '2022-03-09', '2022-03-09', 9, 9),
+(10, '2022-03-10', '2022-03-10', 10, 10);
+
+INSERT INTO fahrzeug_kunde (fahrzeug_id, kunden_id) VALUES
 (1, 1),
-(2, 1),
-(3, 1),
-(4, 2),
-(5, 2),
-(6, 2),
-(7, 4);
-
--- TABLE  mitarbeiter_pro_standort
-
-INSERT INTO mitarbeiter_pro_standort (mitarbieter_id, standort_id) VALUES 
-(1, 1),
-(2, 1),
-(3, 2),
-(4, 2),
-(5, 3),
-(6, 4),
-(7, 4);
-
--- TABLE  abo_modell
--- Schwache Entitaetsmenge
-
-INSERT INTO abo_modell (abo_dauer, kosten, abo_name) VALUES 
-(24, 1600.00, '2 Jahresabo'),
-(12, 900.00, '1 Jahresabo'),
-(6, 500.00, '6 Monatsabo'),
-(3, 300.00, '3 Monatsabo'),
-(1, 175.00, '1 Monatsabo');
-
--- TABLE  abo_kaufhistorie
-
-INSERT INTO abo_kaufhistorie (kunde_id, abo_medell_id, abo_anfang, abo_ende) VALUES 
-(1, 2, to_date('2021-07-12', 'YYYY-MM-DD'), to_date('2022-07-12', 'YYYY-MM-DD')),
-(2, 1, to_date('2022-04-09', 'YYYY-MM-DD'), to_date('2024-04-09', 'YYYY-MM-DD')),
-(3, 4, to_date('2022-05-10', 'YYYY-MM-DD'), to_date('2022-08-10', 'YYYY-MM-DD')),
-(4, 5, to_date('2022-06-24', 'YYYY-MM-DD'), to_date('2022-07-24', 'YYYY-MM-DD')),
-(5, 5, to_date('2022-06-28', 'YYYY-MM-DD'), to_date('2022-07-28', 'YYYY-MM-DD')),
-(6, 3, to_date('2022-07-07', 'YYYY-MM-DD'), to_date('2023-01-07', 'YYYY-MM-DD')),
-(1, 1, to_date('2022-07-12', 'YYYY-MM-DD'), to_date('2024-07-12', 'YYYY-MM-DD'));
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10);

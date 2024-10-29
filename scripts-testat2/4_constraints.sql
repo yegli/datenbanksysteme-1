@@ -1,44 +1,17 @@
-/*
-* Fremdschluessel setzen
-*/
-ALTER TABLE kunden_pro_standort 
-ADD CONSTRAINT fk_kps_kd
- FOREIGN KEY (kunde_id) REFERENCES kunde (id)
- ON DELETE CASCADE
- ON UPDATE CASCADE
-;
+ /*
+ * Foreign Keys and Constraints
+ */
 
-ALTER TABLE kunden_pro_standort 
-ADD CONSTRAINT fk_kps_so
- FOREIGN KEY (standort_id) REFERENCES standorte (id)
- ON DELETE CASCADE
- ON UPDATE CASCADE
-;
+-- Constraints for the vertrag table
+ALTER TABLE vertrag
+ADD CONSTRAINT chk_zahlungsdatum_past CHECK (zahlungsdatum <= CURRENT_DATE),                -- Ensure payment date is not in the future
+ADD CONSTRAINT chk_zahlungsdatum_after_kaufdatum CHECK (verkaufsdatum <= zahlungsdatum);    -- Ensure payment date is after purchase date
 
-ALTER TABLE mitarbeiter_pro_standort 
-ADD CONSTRAINT fk_mps_ma
- FOREIGN KEY (mitarbieter_id) REFERENCES mitarbeiter (id)
- ON DELETE CASCADE
- ON UPDATE CASCADE
-;
-
-ALTER TABLE mitarbeiter_pro_standort 
-ADD CONSTRAINT fk_mps_so
- FOREIGN KEY (standort_id) REFERENCES standorte (id)
- ON DELETE CASCADE
- ON UPDATE CASCADE
-;
-
-ALTER TABLE abo_kaufhistorie 
-ADD CONSTRAINT fk_ak_ab
- FOREIGN KEY (abo_medell_id) REFERENCES abo_modell (id)
- ON DELETE CASCADE
- ON UPDATE CASCADE
-;
-
-ALTER TABLE abo_kaufhistorie 
-ADD CONSTRAINT fk_ak_kd
- FOREIGN KEY (kunde_id) REFERENCES kunde (id)
- ON DELETE CASCADE
- ON UPDATE CASCADE
-;
+-- Constraints for the fahrzeug table
+ALTER TABLE fahrzeug
+ADD CONSTRAINT chk_preis CHECK (preis > 0),                        -- Ensure price is greater than 0
+ADD CONSTRAINT chk_baujahr CHECK (baujahr <= EXTRACT(YEAR FROM CURRENT_DATE)), -- Ensure manufacturing year is not in the future
+ADD CONSTRAINT chk_verfuegbarkeit CHECK (                           -- Ensure vehicle availability
+    (verfuegbarkeit = TRUE)
+    OR (verfuegbarkeit = FALSE)
+);
