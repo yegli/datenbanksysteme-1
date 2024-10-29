@@ -21,7 +21,7 @@ CREATE TABLE mitarbeiter (
 );
 
 CREATE TABLE verkäufer (
-  id INTEGER PRIMARY KEY,--NOT NULL UNIQUE?
+  id INTEGER PRIMARY KEY NOT NULL UNIQUE,--NOT NULL UNIQUE?
   fk_mitarbeiter INTEGER NOT NULL UNIQUE,
   fk_standort INTEGER NOT NULL
   );
@@ -31,7 +31,7 @@ CREATE TABLE kunde (
   );
 
 CREATE TABLE standort (
-  id INTEGER PRIMARY KEY --NOT NULL UNIQUE?
+  id INTEGER PRIMARY KEY, --NOT NULL UNIQUE?
   stadt VARCHAR(255) NOT NULL
 );
 
@@ -55,6 +55,6 @@ CREATE TABLE vertrag (
 
 CREATE TABLE kunde_fahrzeug ( --Needs Constraint: No Duplicates
   id INTEGER PRIMARY KEY,
-  fk_kunde NOT NULL,
-  fk_fahrzeug NOT NULL  
+  fk_kunde INTEGER NOT NULL,
+  fk_fahrzeug INTEGER NOT NULL  
 );
