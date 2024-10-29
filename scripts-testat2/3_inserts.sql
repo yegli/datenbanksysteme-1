@@ -1,3 +1,4 @@
+-- Yanick Egli, Gaëtan Allemann
 /*
  * INSERT minimum 10 tuples of Test Data for each table
  * DISCLAIMER: Test Data has been created by CHATGPT, PROMPT is added to the appendix of our documentation.

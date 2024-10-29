@@ -1,4 +1,4 @@
-SET PGCLIENTENCODING=UTF8
+-- Yanick Egli, Gaëtan Allemann (copied mostly from AngProj sql files)
 \echo \conninfo
 \echo
 \echo -n 'current client encoding: '\encoding
@@ -7,7 +7,7 @@ SET PGCLIENTENCODING=UTF8
 SET client_min_messages = ERROR;
 \set user root
 \set password '\'root\''
-\set database fitnessstudioverwaltung
+\set database autohandel
 \set promptvar ''
 
 \prompt 'DROP ROLE [':user'] and DROP DATABASE [':database'] if existing (\\q or Ctrl-C to abort)?' promptvar
@@ -45,7 +45,7 @@ CREATE DATABASE :database WITH OWNER=:user ENCODING='UTF8';
 
 -- insert data in slo-mo or use COPY for speedup
 \ir 3_inserts.sql
---\ir 3_copy.sql
+
 
 -- create primary keys, constraints, indexes
 \ir 4_constraints.sql
@@ -65,4 +65,4 @@ CREATE DATABASE :database WITH OWNER=:user ENCODING='UTF8';
 
 \unset ECHO
 -- demonstrate constraints in action
-\ir 6_constraints_tests.sql
+-- \ir 6_constraints_tests.sql

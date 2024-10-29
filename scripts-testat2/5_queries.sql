@@ -1,3 +1,4 @@
+-- Yanick Egli, Gaëtan Allemann
 /*
  * Queries erlauben die Prüfung der Funktionalität der Datenbank.
  */

@@ -1,3 +1,4 @@
+-- Yanick Egli, Gaëtan Allemann
 /*
  * CREATE TABLES based on UML
  */
