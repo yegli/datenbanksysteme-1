@@ -32,7 +32,7 @@ CREATE DATABASE :database WITH OWNER=:user ENCODING='UTF8';
 \encoding 'UTF8'
 
 -- connect to DB as superuser
-\c -reuse-previous=on :database postgres
+--\c -reuse-previous=on :database postgres
 
 -- install extensions
 -- \ir 1_extensions.sql
