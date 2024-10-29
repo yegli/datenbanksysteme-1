@@ -3,7 +3,7 @@
  * CREATE TABLES based on UML
  */
 
-CREATE TABLE person ( --Needs Constraint: fk_kunde exclusive or fk_mitarbeiter
+CREATE TABLE person (
   id INTEGER PRIMARY KEY NOT NULL UNIQUE,
   name VARCHAR(255) NOT NULL,
   vorname VARCHAR(255) NOT NULL,
