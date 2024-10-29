@@ -4,6 +4,7 @@
  */
 
 CREATE TABLE person (
+  id INTEGER PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   vorname VARCHAR(255) NOT NULL,
   adresse VARCHAR(255) NOT NULL,
@@ -17,7 +18,7 @@ CREATE TABLE mitarbeiter (
   anstellungsdatum DATE NOT NULL
 );
 
-CREATE TABLE verkäufer (id INTEGER PRIMARY KEY REFERENCES mitarbeiter(id));
+CREATE TABLE verkäufer (id INTEGER PRIMARY KEY REFERENCES mitarbeiter(mitarbeiter_nummer));
 
 CREATE TABLE kunde (kunden_nummer INTEGER PRIMARY KEY REFERENCES person(id));
 
@@ -34,6 +35,7 @@ CREATE TABLE fahrzeug (
 );
 
 CREATE TABLE vertrag (
+  id INTEGER PRIMARY KEY,
   verkaufsdatum DATE NOT NULL,
   zahlungsdatum DATE NOT NULL
 );

@@ -3,9 +3,8 @@
  * Queries erlauben die Prüfung der Funktionalität der Datenbank.
  */
 
--- SELECT * FROM mitarbeiter WHERE anstellungsdatum < '2020-01-01';
+SELECT * FROM mitarbeiter WHERE anstellungsdatum < '2020-01-01';
 
-SELECT * FROM fahrzeug WHERE verfuegbarkeit = TRUE;
 
 -- -- Should fail because price is less than or equal to 0
 -- INSERT INTO fahrzeug (hersteller, model, baujahr, preis, verfügbarkeit, kunde_id) 
