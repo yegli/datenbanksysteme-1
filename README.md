@@ -1,3 +1,8 @@
+# Run scripts for testat 2
+```
+psql -U postgres -v ON_ERROR_STOP=on -f 0_runAllScripts.sql
+```
+
 ## Run docker container
 This container mounts the directory `~/_code/_PRIV/datenbanksysteme-1/pgdata` to persist any configurations made to the database.
 ```
