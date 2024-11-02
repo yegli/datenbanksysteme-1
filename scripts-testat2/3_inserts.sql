@@ -6,7 +6,7 @@
 
 -- TABLE person
 
-INSERT INTO Person (id, name, vorname, adresse, email, telefonnummer, fk_kunde, fk_mitarbeiter) VALUES
+INSERT INTO person (id, name, vorname, adresse, email, telefonnummer, fk_kunde, fk_mitarbeiter) VALUES
 (1, 'John', 'Doe', '123 Main St', 'johndoe@example.com', '0798513647', NULL ,10),
 (2, 'Jane', 'Smith', '456 Oak St', 'janesmith@example.com', '0776854235', NULL ,9),
 (3, 'Michael', 'Brown', '789 Pine St', 'michaelbrown@example.com', '0776954832', NULL ,8),
@@ -30,7 +30,7 @@ INSERT INTO Person (id, name, vorname, adresse, email, telefonnummer, fk_kunde, 
 
 -- TABLE mitarbeiter
 
-INSERT INTO Mitarbeiter (mitarbeiter_nummer, Abteilung, Anstellungsdatum) VALUES --create table Abteilungen for normalization
+INSERT INTO mitarbeiter (mitarbeiter_nummer, abteilung, anstellungsdatum) VALUES --create table Abteilungen for normalization
 (1, 'Verkauf', '2015-06-15'),
 (2, 'Technik', '2017-03-21'),
 (3, 'Verkauf', '2016-09-10'),
