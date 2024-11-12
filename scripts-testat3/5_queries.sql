@@ -74,6 +74,7 @@ From fahrzeug
 INNER JOIN vertrag on vertrag.fk_fahrzeug = fahrzeug.fahrgestell_nummer
 WHERE vertrag.verkaufsdatum > '2022-01-01' AND vertrag.verkaufsdatum < '2022-12-31';
 
+
 -------------------------------------------------------
 /* 2. Common Table Expressions und Window-Funktionen */
 
@@ -125,8 +126,6 @@ GROUP BY verkaeufer.id, person.name, standort.stadt, standort.id
 ORDER BY standort.id, rank_within_location;
 
 
-
-
 --------------
 /* 3. Views */
 
@@ -146,6 +145,12 @@ INNER JOIN vertrag ON kunde.kunden_nummer = vertrag.fk_kunde;
 SELECT * FROM VertragsPartner WHERE verkaufsdatum > '2022-03-05';
 
 /* Eine einfache View die sich updaten lässt */
-
+CREATE VIEW Autos AS
+SELECT *
+FROM fahrzeug
+WHERE fahrgestell_nummer < 5;
 
 /* Ändern eines Datensatzes in der zweiten View mit einem UPDATE-Statement*/
+UPDATE Autos
+SET hersteller = 'Bring Mich Werkstatt'
+WHERE fahrgestell_nummer = 2;
