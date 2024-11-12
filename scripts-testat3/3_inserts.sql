@@ -26,7 +26,8 @@ INSERT INTO person (id, name, vorname, adresse, email, telefonnummer, fk_kunde, 
 (17, 'Mia', 'Blue', '459 Pine St', 'miablue@example.com', '0771423647',8, NULL),
 (18, 'Mason', 'Red', '560 Oak St', 'masonred@example.com', '0795674534',9, NULL),
 (19, 'Amelia', 'Yellow', '671 Main St', 'ameliayellow@example.com', '0798568546',10, NULL),
-(20, 'Elijah', 'Purple', '782 Spruce St', 'elijahpurple@example.com', '0771236363',1, NULL);
+(20, 'Elijah', 'Purple', '782 Spruce St', 'elijahpurple@example.com', '0771236363',1, NULL),
+(21, 'Alfonso', 'Micropico', '687 Dogwater St', 'alfonso.micropico@example.com', '0779548327',NULL,11);
 
 -- TABLE mitarbeiter
 
@@ -40,7 +41,8 @@ INSERT INTO mitarbeiter (mitarbeiter_nummer, abteilung, anstellungsdatum) VALUES
 (7, 'Marketing', '2017-05-18'),
 (8, 'Finanzen', '2016-04-09'),
 (9, 'Verkauf', '2021-08-22'),
-(10, 'Technik', '2022-02-11');
+(10, 'Technik', '2022-02-11'),
+(11, 'Verkauf', '2022-02-11');
 
 -- TABLE verkaeufer
 
@@ -49,12 +51,13 @@ INSERT INTO verkaeufer (id, fk_mitarbeiter, fk_standort) VALUES
 (2,9,1),
 (3,8,1),
 (4,6,4),
-(5,7,1),
+(5,7,9),
 (6,5,3),
-(7,4,1),
+(7,4,5),
 (8,3,1),
 (9,2,3),
-(10,1,2);
+(10,1,2),
+(11,11,2);
 
 -- TABLE kunde
 
