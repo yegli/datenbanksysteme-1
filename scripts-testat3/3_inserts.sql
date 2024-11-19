@@ -115,10 +115,10 @@ INSERT INTO vertrag (id, verkaufsdatum, zahlungsdatum, fk_fahrzeug, fk_kunde) VA
 (9, '2024-03-09', '2024-03-09', 9, 2),
 (10, '2024-03-10', '2024-03-10', 10, 1);
 
-INSERT INTO kunde_fahrzeug (id, fk_kunde, fk_fahrzeug) VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 3),
-(4, 4, 4),
-(5, 6, 7),
-(6, 1, 2);
+INSERT INTO kunde_fahrzeug (fk_kunde, fk_fahrzeug) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(6, 7),
+(1, 2);

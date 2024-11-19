@@ -53,8 +53,8 @@ CREATE TABLE vertrag (
 
 );
 
-CREATE TABLE kunde_fahrzeug ( --Needs Constraint: No Duplicates
-  id INTEGER PRIMARY KEY,
+CREATE TABLE kunde_fahrzeug (
   fk_kunde INTEGER NOT NULL,
-  fk_fahrzeug INTEGER NOT NULL  
+  fk_fahrzeug INTEGER NOT NULL,
+  PRIMARY KEY (fk_kunde, fk_fahrzeug)
 );
