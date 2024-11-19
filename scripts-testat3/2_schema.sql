@@ -10,12 +10,10 @@ CREATE TABLE person (
   adresse VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   telefonnummer VARCHAR(255) NOT NULL,
-  fk_kunde INTEGER UNIQUE,
-  fk_mitarbeiter INTEGER UNIQUE
 );
 
 CREATE TABLE mitarbeiter (
-  mitarbeiter_nummer INTEGER PRIMARY KEY,
+  mitarbeiter_nummer INTEGER PRIMARY KEY, --fk for person
   abteilung VARCHAR(255) NOT NULL,
   anstellungsdatum DATE NOT NULL
 );
@@ -27,7 +25,7 @@ CREATE TABLE verkaeufer (
   );
 
 CREATE TABLE kunde (
-  kunden_nummer INTEGER PRIMARY KEY
+  kunden_nummer INTEGER PRIMARY KEY --fk for person
   );
 
 CREATE TABLE standort (

@@ -4,16 +4,11 @@
  */
 
 -- Foreign Keys for all tables
-ALTER TABLE person
-ADD CONSTRAINT fk_person_kunde
-    FOREIGN KEY (fk_kunde) REFERENCES kunde(kunden_nummer),
-ADD CONSTRAINT fk_person_mitarbeiter
-    FOREIGN KEY (fk_mitarbeiter) REFERENCES mitarbeiter(mitarbeiter_nummer);
 
 ALTER TABLE verkaeufer
-ADD CONSTRAINT dk_verkaeufer_mitarbeiter
+ADD CONSTRAINT fk_verkaeufer_mitarbeiter
     FOREIGN KEY (fk_mitarbeiter) REFERENCES mitarbeiter(mitarbeiter_nummer),
-ADD CONSTRAINT dk_verkaeufer_standort
+ADD CONSTRAINT fk_verkaeufer_standort
     FOREIGN KEY (fk_standort) REFERENCES standort(id);
 
 ALTER TABLE fahrzeug
@@ -31,6 +26,14 @@ ADD CONSTRAINT fk_kunde_fahrzeug_kunde
     FOREIGN KEY (fk_kunde) REFERENCES kunde(kunden_nummer),
 ADD CONSTRAINT fk_kunde_fahrzeug_fahrzeug
     FOREIGN KEY (fk_fahrzeug) REFERENCES fahrzeug(fahrgestell_nummer);
+
+ALTER TABLE mitarbeiter
+ADD CONSTRAINT fk_mitarbeiter_person
+    FOREIGN KEY (mitarbeiter_nummer) REFERENCES person(id);
+
+ALTER TABLE kunde
+ADD CONSTRAINT fk_kunde_person
+    FOREIGN KEY (kunden_nummer) REFERENCES person(id);
 
 /*
  * Constraints
