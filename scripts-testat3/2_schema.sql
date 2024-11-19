@@ -4,8 +4,9 @@
  */
 
 CREATE TABLE person (
-  id INTEGER PRIMARY KEY,
-  --type INTEGER NOT NULL, -- is person a "kunde" or a "mitarbeiter" 0 = "kunde" 1 = "mitarbeiter"
+  id INTEGER,
+  type INTEGER NOT NULL, -- is person a "kunde" or a "mitarbeiter" 1 = "kunde" 0 = "mitarbeiter"
+  PRIMARY KEY (id, type),
   name VARCHAR(255) NOT NULL,
   vorname VARCHAR(255) NOT NULL,
   adresse VARCHAR(255) NOT NULL,
@@ -15,6 +16,7 @@ CREATE TABLE person (
 
 CREATE TABLE mitarbeiter (
   mitarbeiter_nummer INTEGER PRIMARY KEY, --fk for person
+  type INTEGER NOT NULL, --needed because of person primary key | is there another option? fugging hell
   abteilung VARCHAR(255) NOT NULL,
   anstellungsdatum DATE NOT NULL
 );
@@ -25,7 +27,8 @@ CREATE TABLE verkaeufer (
   );
 
 CREATE TABLE kunde (
-  kunden_nummer INTEGER PRIMARY KEY --fk for person
+  kunden_nummer INTEGER PRIMARY KEY, --fk for person
+  type INTEGER NOT NULL --needed because of person primary key | is there another option?
   );
 
 CREATE TABLE standort (

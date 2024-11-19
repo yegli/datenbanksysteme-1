@@ -29,11 +29,11 @@ ADD CONSTRAINT fk_kunde_fahrzeug_fahrzeug
 
 ALTER TABLE mitarbeiter
 ADD CONSTRAINT fk_mitarbeiter_person
-    FOREIGN KEY (mitarbeiter_nummer) REFERENCES person(id);
+    FOREIGN KEY (mitarbeiter_nummer, type) REFERENCES person(id, type);
 
 ALTER TABLE kunde
 ADD CONSTRAINT fk_kunde_person
-    FOREIGN KEY (kunden_nummer) REFERENCES person(id);
+    FOREIGN KEY (kunden_nummer, type) REFERENCES person(id, type);
 
 /*
  * Constraints
