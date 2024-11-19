@@ -51,3 +51,7 @@ ADD CONSTRAINT chk_baujahr_past CHECK (baujahr <= date_part('year', CURRENT_DATE
 ALTER TABLE vertrag
 ADD CONSTRAINT chk_zahlungsdatum_past CHECK (zahlungsdatum <= CURRENT_DATE),                
 ADD CONSTRAINT chk_zahlungsdatum_after_kaufdatum CHECK (verkaufsdatum <= zahlungsdatum);
+
+ -- Check that a "mitarbeiter" cant be a "kunde"
+ ALTER TABLE kunde
+ ADD CONSTRAINT chk_mitarbeiter_nr_not_kunde_nr CHECK (kunde.kunden_nummer IS NOT mitarbeiter.mitarbeiter_nummer);
