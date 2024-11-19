@@ -48,6 +48,9 @@ ALTER TABLE vertrag
 ADD CONSTRAINT chk_zahlungsdatum_past CHECK (zahlungsdatum <= CURRENT_DATE),                
 ADD CONSTRAINT chk_zahlungsdatum_after_kaufdatum CHECK (verkaufsdatum <= zahlungsdatum);
 
- -- Check that a "mitarbeiter" cant be a "kunde"
- --ALTER TABLE kunde
- --ADD CONSTRAINT chk_mitarbeiter_type_1 CHECK ();
+ -- Check that a "mitarbeiter" cant be a "kunde" (scuffed version)
+ ALTER TABLE kunde
+ ADD CONSTRAINT chk_kunde_type_1 CHECK (type = 1);
+
+ ALTER TABLE mitarbeiter
+ ADD CONSTRAINT chk_mitarbeiter_type_0 CHECK (type = 0);
