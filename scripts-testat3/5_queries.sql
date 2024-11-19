@@ -16,16 +16,19 @@ SELECT
     vertrag.verkaufsdatum, 
     fahrzeug.model 
 FROM fahrzeug
-INNER JOIN vertrag ON fahrzeug.fahrgestell_nummer = vertrag.id
+INNER JOIN vertrag ON fahrzeug.fahrgestell_nummer = vertrag.fk_fahrzeug
 INNER JOIN kunde ON vertrag.fk_kunde = kunde.kunden_nummer
-INNER JOIN person ON kunde.kunden_nummer = person.fk_kunde;
+INNER JOIN person ON kunde.kunden_nummer = person.id AND kunde.type = person.type;
 
 /* Eine Query mit Unterabfrage*/
 /* korreliert oder unkorreliert? */ /* returns the name of any mitarbeiter that are verkäufer and work in Bern*/
+
+--no clue how to fix
+/*
 SELECT 
     person.name,
     person.vorname
-FROM person WHERE person.fk_mitarbeiter IN (
+FROM person WHERE person. IN (
     SELECT mitarbeiter_nummer
     FROM mitarbeiter
     WHERE fk_mitarbeiter IN (
@@ -38,7 +41,7 @@ FROM person WHERE person.fk_mitarbeiter IN (
         )
     )
 );
-    
+*/
 
 /* Eine Query mit entweder ANY, IN, EXISTS oder ALL gegebenenfalls mit NOT davor*/
 /*Alle Autos auf der Wunschliste von einem bestimmten Kunden resp. dessen ID*/
@@ -50,10 +53,11 @@ SELECT
     person.name
 FROM fahrzeug 
 INNER JOIN kunde_fahrzeug ON kunde_fahrzeug.fk_fahrzeug = fahrzeug.fahrgestell_nummer
-INNER JOIN person ON person.id = kunde_fahrzeug.fk_kunde --It's scuffed I know
+INNER JOIN kunde ON kunde_fahrzeug.fk_kunde = kunde.kunden_nummer
+INNER JOIN person ON person.id = kunde.kunden_nummer AND person.type = kunde.type
 WHERE EXISTS (
     SELECT kunde_fahrzeug.fk_kunde, kunde_fahrzeug.fk_fahrzeug 
-    WHERE kunde_fahrzeug.fk_kunde = 1);
+    WHERE kunde_fahrzeug.fk_kunde = 12);
 
 /* Eine Query bei der ein OUTER JOIN erforderlich ist */
 /*Alle Mitarbeiter die keine Verkäufer sind*/
@@ -61,8 +65,8 @@ SELECT
     person.vorname,
     person.name
 From mitarbeiter
-LEFT JOIN verkaeufer on mitarbeiter.mitarbeiter_nummer = verkaeufer.fk_mitarbeiter
-INNER JOIN person on mitarbeiter.mitarbeiter_nummer = person.fk_mitarbeiter;
+LEFT JOIN verkaeufer ON mitarbeiter.mitarbeiter_nummer = verkaeufer.id
+INNER JOIN person ON mitarbeiter.mitarbeiter_nummer = person.id AND mitarbeiter.type = person.type;
 
 /* Eine Querry die Datensätze aufgrund eines Datums und/oder Zeitangabe liefert */
 /*Alle Autos die im Jahr 2022 verkauft wurden*/
@@ -94,7 +98,7 @@ WHERE vertrag.verkaufsdatum > '2022-01-01' AND vertrag.verkaufsdatum < '2022-12-
 WITH techniker AS (
     SELECT person.name, mitarbeiter.mitarbeiter_nummer, mitarbeiter.anstellungsdatum
     FROM person
-    INNER JOIN mitarbeiter ON person.fk_mitarbeiter = mitarbeiter.mitarbeiter_nummer
+    INNER JOIN mitarbeiter ON person.id = mitarbeiter.mitarbeiter_nummer AND person.type = mitarbeiter.type
     WHERE mitarbeiter.abteilung = 'Technik'
 )
 SELECT *
@@ -106,8 +110,8 @@ SELECT
     COUNT(person.id) AS  "Anz. Verkäufer",
     standort.stadt
 FROM person
-INNER JOIN mitarbeiter ON person.fk_mitarbeiter = mitarbeiter_nummer
-INNER JOIN verkaeufer ON mitarbeiter.mitarbeiter_nummer = verkaeufer.fk_mitarbeiter
+INNER JOIN mitarbeiter ON person.id = mitarbeiter.mitarbeiter_nummer AND person.type = mitarbeiter.type
+INNER JOIN verkaeufer ON mitarbeiter.mitarbeiter_nummer = verkaeufer.id
 INNER JOIN standort ON verkaeufer.fk_standort = standort.id
 GROUP BY standort.stadt;
 
@@ -119,7 +123,8 @@ SELECT
     COUNT(vertrag.id) AS vertrag_count,
     RANK() OVER (PARTITION BY standort.id ORDER BY COUNT(vertrag.id) DESC) AS rank_within_location
 FROM verkaeufer
-INNER JOIN person ON verkaeufer.fk_mitarbeiter = person.fk_mitarbeiter
+INNER JOIN mitarbeiter ON verkaeufer.id = mitarbeiter.mitarbeiter_nummer
+INNER JOIN person ON person.id = mitarbeiter.mitarbeiter_nummer AND person.type = mitarbeiter.type
 INNER JOIN standort ON verkaeufer.fk_standort = standort.id
 LEFT JOIN vertrag ON verkaeufer.id = vertrag.fk_fahrzeug
 GROUP BY verkaeufer.id, person.name, standort.stadt, standort.id
@@ -137,7 +142,7 @@ SELECT
     vertrag.id,
     vertrag.verkaufsdatum
 FROM person
-INNER JOIN kunde ON person.fk_kunde = kunde.kunden_nummer
+INNER JOIN kunde ON person.id = kunde.kunden_nummer AND person.type = kunde.type
 INNER JOIN vertrag ON kunde.kunden_nummer = vertrag.fk_kunde;
 
 
