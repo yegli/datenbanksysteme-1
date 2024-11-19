@@ -5,11 +5,12 @@
 
 CREATE TABLE person (
   id INTEGER PRIMARY KEY,
+  --type INTEGER NOT NULL, -- is person a "kunde" or a "mitarbeiter" 0 = "kunde" 1 = "mitarbeiter"
   name VARCHAR(255) NOT NULL,
   vorname VARCHAR(255) NOT NULL,
   adresse VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
-  telefonnummer VARCHAR(255) NOT NULL,
+  telefonnummer VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE mitarbeiter (
@@ -19,8 +20,7 @@ CREATE TABLE mitarbeiter (
 );
 
 CREATE TABLE verkaeufer (
-  id INTEGER PRIMARY KEY,
-  fk_mitarbeiter INTEGER NOT NULL UNIQUE,
+  id INTEGER PRIMARY KEY, --fk for mitarbeiter
   fk_standort INTEGER NOT NULL
   );
 

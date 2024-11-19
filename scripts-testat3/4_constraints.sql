@@ -7,7 +7,7 @@
 
 ALTER TABLE verkaeufer
 ADD CONSTRAINT fk_verkaeufer_mitarbeiter
-    FOREIGN KEY (fk_mitarbeiter) REFERENCES mitarbeiter(mitarbeiter_nummer),
+    FOREIGN KEY (id) REFERENCES mitarbeiter(mitarbeiter_nummer),
 ADD CONSTRAINT fk_verkaeufer_standort
     FOREIGN KEY (fk_standort) REFERENCES standort(id);
 
@@ -39,10 +39,6 @@ ADD CONSTRAINT fk_kunde_person
  * Constraints
  */
 
- -- Check that the foreign keys on person table are exclusive
-ALTER TABLE person
-ADD CONSTRAINT chk_exclusive_fk_kunde_fk_mitarbeiter CHECK (fk_kunde IS NULL OR fk_mitarbeiter IS NULL);
-
 ALTER TABLE fahrzeug
 ADD CONSTRAINT chk_price_positive CHECK (preis > 0),
 ADD CONSTRAINT chk_baujahr_past CHECK (baujahr <= date_part('year', CURRENT_DATE));
@@ -53,5 +49,5 @@ ADD CONSTRAINT chk_zahlungsdatum_past CHECK (zahlungsdatum <= CURRENT_DATE),
 ADD CONSTRAINT chk_zahlungsdatum_after_kaufdatum CHECK (verkaufsdatum <= zahlungsdatum);
 
  -- Check that a "mitarbeiter" cant be a "kunde"
- ALTER TABLE kunde
- ADD CONSTRAINT chk_mitarbeiter_nr_not_kunde_nr CHECK (kunde.kunden_nummer IS NOT mitarbeiter.mitarbeiter_nummer);
+ --ALTER TABLE kunde
+ --ADD CONSTRAINT chk_mitarbeiter_type_1 CHECK ();
