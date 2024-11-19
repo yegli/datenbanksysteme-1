@@ -47,8 +47,4 @@ ADD CONSTRAINT chk_baujahr_past CHECK (baujahr <= date_part('year', CURRENT_DATE
  -- Check that zahlungsdatum is in the past and that verkaufsdatum is before zahlungsdatum
 ALTER TABLE vertrag
 ADD CONSTRAINT chk_zahlungsdatum_past CHECK (zahlungsdatum <= CURRENT_DATE),                
-ADD CONSTRAINT chk_zahlungsdatum_after_kaufdatum CHECK (verkaufsdatum <= zahlungsdatum);     
-
- -- Check that all tuples in kunde_fahrzeug are unique
-ALTER TABLE kunde_fahrzeug
-ADD CONSTRAINT chk_no_duplicates UNIQUE (fk_kunde, fk_fahrzeug);
+ADD CONSTRAINT chk_zahlungsdatum_after_kaufdatum CHECK (verkaufsdatum <= zahlungsdatum);
