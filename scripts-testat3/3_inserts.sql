@@ -6,72 +6,72 @@
 
 -- TABLE person
 
-INSERT INTO person (id, name, vorname, adresse, email, telefonnummer, fk_kunde, fk_mitarbeiter) VALUES
-(1, 'John', 'Doe', '123 Main St', 'johndoe@example.com', '0798513647', NULL ,10),
-(2, 'Jane', 'Smith', '456 Oak St', 'janesmith@example.com', '0776854235', NULL ,9),
-(3, 'Michael', 'Brown', '789 Pine St', 'michaelbrown@example.com', '0776954832', NULL ,8),
-(4, 'Emily', 'White', '135 Maple St', 'emilywhite@example.com', '0792345678', NULL ,7),
-(5, 'David', 'Black', '246 Elm St', 'davidblack@example.com', '0779583434', NULL ,6),
-(6, 'Sophia', 'Green', '357 Cedar St', 'sophiagreen@example.com', '0792349797', NULL ,5),
-(7, 'James', 'Blue', '468 Birch St', 'jamesblue@example.com', '0771232992', NULL ,4),
-(8, 'Emma', 'Red', '579 Willow St', 'emmared@example.com', '0796787878', NULL ,3),
-(9, 'Lucas', 'Yellow', '681 Ash St', 'lucasyellow@example.com', '0771423647', NULL ,2),
-(10, 'Olivia', 'Purple', '792 Spruce St', 'oliviapurple@example.com', '0791267352', NULL ,1),
-(11, 'Liam', 'Orange', '893 Sycamore St', 'liamorange@example.com', '0771423564',2, NULL),
-(12, 'Ava', 'Pink', '904 Poplar St', 'avapink@example.com', '0796843674',3, NULL),
-(13, 'Noah', 'Brown', '015 Cedar St', 'noahbrown@example.com', '0779685869',4, NULL),
-(14, 'Isabella', 'White', '126 Birch St', 'isabellawhite@example.com', '0799654828',5, NULL),
-(15, 'Ethan', 'Black', '237 Willow St', 'ethenblack@example.com', '0772345342',6, NULL),
-(16, 'Sophia', 'Green', '348 Elm St', 'sophiagreen@example.com', '0776754976',7, NULL),
-(17, 'Mia', 'Blue', '459 Pine St', 'miablue@example.com', '0771423647',8, NULL),
-(18, 'Mason', 'Red', '560 Oak St', 'masonred@example.com', '0795674534',9, NULL),
-(19, 'Amelia', 'Yellow', '671 Main St', 'ameliayellow@example.com', '0798568546',10, NULL),
-(20, 'Elijah', 'Purple', '782 Spruce St', 'elijahpurple@example.com', '0771236363',1, NULL),
-(21, 'Alfonso', 'Micropico', '687 Dogwater St', 'alfonso.micropico@example.com', '0779548327',NULL,11);
+INSERT INTO person (id, type, name, vorname, adresse, email, telefonnummer) VALUES
+(1, 0, 'John', 'Doe', '123 Main St', 'johndoe@example.com', '0798513647'),
+(2, 0, 'Jane', 'Smith', '456 Oak St', 'janesmith@example.com', '0776854235'),
+(3, 0, 'Michael', 'Brown', '789 Pine St', 'michaelbrown@example.com', '0776954832'),
+(4, 0, 'Emily', 'White', '135 Maple St', 'emilywhite@example.com', '0792345678'),
+(5, 0, 'David', 'Black', '246 Elm St', 'davidblack@example.com', '0779583434'),
+(6, 0, 'Sophia', 'Green', '357 Cedar St', 'sophiagreen@example.com', '0792349797'),
+(7, 0, 'James', 'Blue', '468 Birch St', 'jamesblue@example.com', '0771232992'),
+(8, 0, 'Emma', 'Red', '579 Willow St', 'emmared@example.com', '0796787878'),
+(9, 0, 'Lucas', 'Yellow', '681 Ash St', 'lucasyellow@example.com', '0771423647'),
+(10, 0, 'Olivia', 'Purple', '792 Spruce St', 'oliviapurple@example.com', '0791267352'),
+(11, 0, 'Liam', 'Orange', '893 Sycamore St', 'liamorange@example.com', '0771423564'),
+(12, 1, 'Ava', 'Pink', '904 Poplar St', 'avapink@example.com', '0796843674'),
+(13, 1, 'Noah', 'Brown', '015 Cedar St', 'noahbrown@example.com', '0779685869'),
+(14, 1, 'Isabella', 'White', '126 Birch St', 'isabellawhite@example.com', '0799654828'),
+(15, 1, 'Ethan', 'Black', '237 Willow St', 'ethenblack@example.com', '0772345342'),
+(16, 1, 'Sophia', 'Green', '348 Elm St', 'sophiagreen@example.com', '0776754976'),
+(17, 1, 'Mia', 'Blue', '459 Pine St', 'miablue@example.com', '0771423647'),
+(18, 1, 'Mason', 'Red', '560 Oak St', 'masonred@example.com', '0795674534'),
+(19, 1, 'Amelia', 'Yellow', '671 Main St', 'ameliayellow@example.com', '0798568546'),
+(20, 1, 'Elijah', 'Purple', '782 Spruce St', 'elijahpurple@example.com', '0771236363'),
+(21, 1, 'Alfonso', 'Micropico', '687 Dogwater St', 'alfonso.micropico@example.com', '0779548327');
 
 -- TABLE mitarbeiter
 
-INSERT INTO mitarbeiter (mitarbeiter_nummer, abteilung, anstellungsdatum) VALUES --create table Abteilungen for normalization
-(1, 'Verkauf', '2015-06-15'),
-(2, 'Technik', '2017-03-21'),
-(3, 'Verkauf', '2016-09-10'),
-(4, 'HR', '2018-01-25'),
-(5, 'Technik', '2019-11-03'),
-(6, 'Verkauf', '2020-07-12'),
-(7, 'Marketing', '2017-05-18'),
-(8, 'Finanzen', '2016-04-09'),
-(9, 'Verkauf', '2021-08-22'),
-(10, 'Technik', '2022-02-11'),
-(11, 'Verkauf', '2022-02-11');
+INSERT INTO mitarbeiter (mitarbeiter_nummer, type, abteilung, anstellungsdatum) VALUES --create table Abteilungen for normalization
+(1, 0, 'Verkauf', '2015-06-15'),
+(2, 0, 'Technik', '2017-03-21'),
+(3, 0, 'Verkauf', '2016-09-10'),
+(4, 0, 'HR', '2018-01-25'),
+(5, 0, 'Technik', '2019-11-03'),
+(6, 0, 'Verkauf', '2020-07-12'),
+(7, 0, 'Marketing', '2017-05-18'),
+(8, 0, 'Finanzen', '2016-04-09'),
+(9, 0, 'Verkauf', '2021-08-22'),
+(10, 0, 'Technik', '2022-02-11'),
+(11, 0, 'Verkauf', '2022-02-11');
 
 -- TABLE verkaeufer
 
-INSERT INTO verkaeufer (id, fk_mitarbeiter, fk_standort) VALUES
-(1,10,1),
-(2,9,1),
-(3,8,1),
-(4,6,4),
-(5,7,9),
-(6,5,3),
-(7,4,5),
-(8,3,1),
-(9,2,3),
-(10,1,2),
-(11,11,2);
+INSERT INTO verkaeufer (id, fk_standort) VALUES
+(1,1),
+(2,1),
+(3,1),
+(4,4),
+(5,9),
+(6,3),
+(7,5),
+(8,1),
+(9,3),
+(10,2),
+(11,2);
 
 -- TABLE kunde
 
-INSERT INTO kunde (kunden_nummer) VALUES
-(1),
-(2),
-(3),
-(4),
-(5),
-(6),
-(7),
-(8),
-(9),
-(10);
+INSERT INTO kunde (kunden_nummer, type) VALUES
+(12,1),
+(13,1),
+(14,1),
+(15,1),
+(16,1),
+(17,1),
+(18,1),
+(19,1),
+(20,1),
+(21,1);
 
 -- TABLE standorte
 
@@ -104,21 +104,21 @@ INSERT INTO fahrzeug (fahrgestell_nummer, hersteller, model, baujahr, preis, fk_
 -- TABLE vertrag
 
 INSERT INTO vertrag (id, verkaufsdatum, zahlungsdatum, fk_fahrzeug, fk_kunde) VALUES
-(1, '2022-03-01', '2022-03-01', 1, 10),
-(2, '2022-03-02', '2022-03-02', 2, 9),
-(3, '2022-03-03', '2022-03-03', 3, 8),
-(4, '2022-03-04', '2022-03-04', 4, 7),
-(5, '2022-03-05', '2022-03-05', 5, 6),
-(6, '2023-03-06', '2023-03-06', 6, 5),
-(7, '2023-03-07', '2023-03-07', 7, 4),
-(8, '2024-03-08', '2024-03-08', 8, 3),
-(9, '2024-03-09', '2024-03-09', 9, 2),
-(10, '2024-03-10', '2024-03-10', 10, 1);
+(1, '2022-03-01', '2022-03-01', 1, 12),
+(2, '2022-03-02', '2022-03-02', 2, 13),
+(3, '2022-03-03', '2022-03-03', 3, 14),
+(4, '2022-03-04', '2022-03-04', 4, 15),
+(5, '2022-03-05', '2022-03-05', 5, 16),
+(6, '2023-03-06', '2023-03-06', 6, 17),
+(7, '2023-03-07', '2023-03-07', 7, 18),
+(8, '2024-03-08', '2024-03-08', 8, 19),
+(9, '2024-03-09', '2024-03-09', 9, 21),
+(10, '2024-03-10', '2024-03-10', 10, 20);
 
-INSERT INTO kunde_fahrzeug (id, fk_kunde, fk_fahrzeug) VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 3),
-(4, 4, 4),
-(5, 6, 7),
-(6, 1, 2);
+INSERT INTO kunde_fahrzeug (fk_kunde, fk_fahrzeug) VALUES
+(12, 1),
+(13, 2),
+(14, 3),
+(15, 4),
+(16, 7),
+(17, 2);
