@@ -22,26 +22,26 @@ INNER JOIN person ON kunde.kunden_nummer = person.id AND kunde.type = person.typ
 
 /* Eine Query mit Unterabfrage*/
 /* korreliert oder unkorreliert? */ /* returns the name of any mitarbeiter that are verkäufer and work in Bern*/
+/* unkorreliert, da die subquerry nicht von der öusseren querry abhängig ist, die von person abfragt. */
 
---no clue how to fix
-/*
 SELECT 
     person.name,
     person.vorname
-FROM person WHERE person. IN (
-    SELECT mitarbeiter_nummer
+FROM person
+WHERE person.type = 0  -- Only consider employees (mitarbeiter)
+AND person.id IN (
+    SELECT mitarbeiter.mitarbeiter_nummer
     FROM mitarbeiter
-    WHERE fk_mitarbeiter IN (
-        SELECT fk_mitarbeiter
+    WHERE mitarbeiter.mitarbeiter_nummer IN (
+        SELECT verkaeufer.id
         FROM verkaeufer
-        WHERE fk_standort IN (
-            SELECT id
+        WHERE verkaeufer.fk_standort IN (
+            SELECT standort.id
             FROM standort
-            WHERE stadt = 'Bern'
+            WHERE standort.stadt = 'Bern'
         )
     )
 );
-*/
 
 /* Eine Query mit entweder ANY, IN, EXISTS oder ALL gegebenenfalls mit NOT davor*/
 /*Alle Autos auf der Wunschliste von einem bestimmten Kunden resp. dessen ID*/
