@@ -32,7 +32,7 @@ CREATE TABLE kunde (
   );
 
 CREATE TABLE standort (
-  id INTEGER PRIMARY KEY,
+  id INTEGER PRIMARY KEY, -- fk for verkaeufer
   stadt VARCHAR(255) NOT NULL
 );
 
