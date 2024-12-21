@@ -8,7 +8,7 @@
 
 /* Eine Query mit DISTINCT inklusive Begründung:
  * Distinct da ansonsten duplikate Abteilungsnamen zurückgegeben werden. */
-SELECT DISTINCT abteilung FROM mitarbeiter;
+SELECT DISTINCT abteilung FROM mitarbeiter; /* returns only abteilungen which also have employees */
 
 /* Eine Query mit einem JOIN über drei oder mehr Tabellen */
 SELECT 
@@ -67,6 +67,7 @@ SELECT
 From mitarbeiter
 LEFT JOIN verkaeufer ON mitarbeiter.mitarbeiter_nummer = verkaeufer.id
 INNER JOIN person ON mitarbeiter.mitarbeiter_nummer = person.id AND mitarbeiter.type = person.type;
+/* exists is better suited to not require the not null attribute in the verkäufer tabelle */
 
 /* Eine Querry die Datensätze aufgrund eines Datums und/oder Zeitangabe liefert */
 /*Alle Autos die im Jahr 2022 verkauft wurden*/
@@ -77,7 +78,7 @@ SELECT
 From fahrzeug
 INNER JOIN vertrag on vertrag.fk_fahrzeug = fahrzeug.fahrgestell_nummer
 WHERE vertrag.verkaufsdatum > '2022-01-01' AND vertrag.verkaufsdatum < '2022-12-31';
-
+/* missing equals to ensure that it also can be sold on first of jan or new years eve */
 
 -------------------------------------------------------
 /* 2. Common Table Expressions und Window-Funktionen */
@@ -105,6 +106,8 @@ SELECT *
 FROM techniker
 WHERE anstellungsdatum > '2017-01-01';
 
+/* FIX CTE querry to match inner / outer query from above */
+
 /* Schreiben Sie eine sinnvolle Query mit einer GROUP BY-Klausel */
 SELECT 
     COUNT(person.id) AS  "Anz. Verkäufer",
@@ -114,6 +117,8 @@ INNER JOIN mitarbeiter ON person.id = mitarbeiter.mitarbeiter_nummer AND person.
 INNER JOIN verkaeufer ON mitarbeiter.mitarbeiter_nummer = verkaeufer.id
 INNER JOIN standort ON verkaeufer.fk_standort = standort.id
 GROUP BY standort.stadt;
+
+/* doesn't require person and mitarbeiter tabelle */
 
 /* Schreiben Sie eine sinnvolle Query mit einer Window-Funktion */
 SELECT 
